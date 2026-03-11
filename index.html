@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Different Soup</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #111;
+    }
+    img {
+      max-width: 80vmin;
+      max-height: 80vmin;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+    img.spin {
+      animation: rotate 1s ease-in-out;
+    }
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <img src="boyardee.jpg" alt="DifferentSoup" id="boyardee">
+  <script>
+    const img = document.getElementById('boyardee');
+    img.addEventListener('click', () => {
+      img.classList.remove('spin');
+      void img.offsetWidth; // force reflow to restart animation
+      img.classList.add('spin');
+    });
+    img.addEventListener('animationend', () => {
+      img.classList.remove('spin');
+    });
+  </script>
+</body>
+</html>
